@@ -1,10 +1,7 @@
 ﻿@using ProjetoHttpClient.Dto
-@model UsuarioCriacaoDto
+@model UsuarioEditarDto
 
 
-@{
-    Layout = "_LayoutDeslogada";
-}
 
 @if (TempData["MensagemSucesso"] != null)
 {
@@ -21,9 +18,12 @@
 }
 
 <div asp-validation-summary="All" class="text-danger"></div>
-<div class="container">
-    <h1>Cadastro de Usuários</h1>
-    <form asp-action="Registrar" asp-controller="Home" method="post">
+<div class="container mt-5">
+    <h1>Edição de Usuários</h1>
+    <form asp-action="EditarUsuario" asp-controller="Home" method="post">
+
+        <input type="hidden" asp-for="Id" />
+
         <div class="mb-3">
             <label class="form-label">Email:</label>
             <input type="text" class="form-control" asp-for="Email">
@@ -44,15 +44,8 @@
             <input type="text" class="form-control" asp-for="Sobrenome">
 
         </div>
-        <div class="mb-3">
-            <label class="form-label">Senha:</label>
-            <input type="password" class="form-control" asp-for="Senha">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Confirmação de senha:</label>
-            <input type="password" class="form-control" asp-for="ConfirmaSenha">
-        </div>
-        <button type="submit" class="btn btn-primary w-100 mb-3">Cadastrar-se</button>
-        <a asp-action="Login" asp-controller="Home" class="btn btn-secondary w-100">Voltar</a>
+
+        <button type="submit" class="btn btn-primary w-100 mb-3">Editar</button>
+        <a asp-action="ListarUsuarios" asp-controller="Home" class="btn btn-secondary w-100">Voltar</a>
     </form>
 </div>
